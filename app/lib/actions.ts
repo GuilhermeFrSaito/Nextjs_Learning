@@ -63,7 +63,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
         };
     }
     
-    revalidatePath('dashboard/invoices');
+    revalidatePath('/dashboard/invoices');
     redirect('/dashboard/invoices');
 }
 
@@ -101,8 +101,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
 }
 
 export async function deleteInvoice(id: string) {
-    throw new Error('Failed to Delete Invoice.');
-    
     try {
         await sql`DELETE FROM invoices WHERE id = ${id}`;
         revalidatePath('/dashboard/invoices');
